@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.geometry.Insets?>
+
+<HBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group6.DecryptorController">
+   
+   <!-- Left Section: Key and Plaintext Inputs -->
+   <VBox spacing="15.0" alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+      <!-- Key Section -->
+      <Label text="Enter or Load Key" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+      <HBox spacing="15.0">
+         <TextField fx:id="keyField" promptText="Enter 26-character key" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+         <Button fx:id="loadKeyButton" text="📂" onAction="#handleLoadKeyFromFile" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+      </HBox>
+
+      <!-- Plaintext Section -->
+      <Label text="Enter or Load Ciphertext" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+      <HBox spacing="15.0">
+         <!-- Make the TextArea take most of the space, and button has a fixed width -->
+         <TextArea fx:id="cipherTextArea" promptText="Enter ciphertext to decrypt" prefRowCount="20" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+         <Button fx:id="loadCipherTextButton" text="📂" onAction="#handleLoadCipherTextFromFile" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+      </HBox>
+
+      <!-- Encryption Button -->
+      <Button fx:id="decryptButton" text="Start Decryption" onAction="#handleDecryption" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+   </VBox>
+   
+   <!-- Right Section: Logs and Cipher Text Display -->
+   <VBox spacing="15.0" alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+      <!-- Logs Section -->
+      <Label text="Decryption Logs" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+      <TextArea fx:id="logArea" editable="false" wrapText="true" prefHeight="100.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+
+      <!-- Encrypted Text Section -->
+      <Label text="Decrypted Text" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+      <TextArea fx:id="decryptedTextArea" editable="false" wrapText="true" prefHeight="150.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
+
+      <!-- Save to File Button -->
+      <Button fx:id="saveToFileButton" text="Save to File" onAction="#handleSaveToFile" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+   </VBox>
+
+   <!-- Padding for entire container -->
+   <padding>
+      <Insets top="20.0" bottom="20.0" left="20.0" right="20.0" />
+   </padding>
+</HBox>
